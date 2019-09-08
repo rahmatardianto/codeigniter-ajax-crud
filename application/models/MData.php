@@ -2,20 +2,23 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class MData extends CI_Model {
-    private $table = 'barang'; // table yang digunakan
-    private $order = array('id_barang', 'desc'); // Agar yang terakhir ditambahkan ditampilkan awal
-    private $column_search = array('barang', 'harga'); // Agar yang terakhir ditambahkan ditampilkan awal
+    private $table = 'barang'; // Table used
+    private $order = array('id_barang', 'desc'); // last row added showing first
+    private $column_search = array('barang', 'harga'); // What columns that feature can using search
 
+    // Function tambah with parameter data type array, will insert data to the table
     public function tambah($data) {
         $hasil = $this->db->insert($this->table, $data);
         return $hasil;
     }
 
+    // Function update with parameter data and where, will update data in the table
     public function update($data, $where) {
     	$hasil = $this->db->update($this->table, $data, $where);
         return $hasil;
     }
 
+    // function hapus with parameter where, will deleted row in the table
     public function hapus($where) {
         $hasil = $this->db->delete($this->table, $where);
         return $hasil;
